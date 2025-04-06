@@ -48,9 +48,20 @@ for _, row in annotations.iterrows():
             dx = [FRAME_RATE_UNC / FRAME_RATE**2 for _ in range(len(x_subset))]
             dy = [y * np.sqrt((PX_UNC / PX_PER_MM) ** 2 + (M_PER_PIXEL_UNC / M_PER_PIXEL) ** 2) for y in y_subset]
 
+            x_subset = np.array(x_subset)
+            y_subset = np.array(y_subset)
+            dx = np.array(dx)
+            dy = np.array(dy)
 
+            mask = ~np.isnan(x_subset) & ~np.isnan(y_subset)
+            x_subset = x_subset[mask]
+            y_subset = y_subset[mask]
+            dx = dx[mask]
+            dy = dy[mask]
+
+            
             if len(y_subset) < 2:
-                return np.nan, np.nan, np.nan  # Not enough points
+                return np.nan, np.nan, np.nan, np.nan  # Not enough points
             
             # plt.plot(x_subset, y_subset, label=f"{filename} ({start_frame}-{end_frame})")
             # plt.errorbar(x_subset, y_subset, xerr=dx, yerr=dy, fmt='o', label=f"{filename} ({start_frame}-{end_frame})")
