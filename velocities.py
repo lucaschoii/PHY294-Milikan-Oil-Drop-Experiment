@@ -29,10 +29,10 @@ FRAME_RATE_UNC = 0.1
 for _, row in annotations.iterrows():
     
     try:
-        filename = row['filename']  
+        filename = row['filename']
         filepath = os.path.join(data_path, filename)
         stopping_voltage = filename.split('_')[0]
-        rising_voltage = filename.split('_')[1]
+        rising_voltage = filename.split('_')[1].replace('.tsv', '')
         print(f"Processing: {filename}")
 
         df = pd.read_csv(filepath, sep='\t', na_values='#NV')
