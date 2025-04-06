@@ -26,7 +26,7 @@ def plot_file(file):
     filename = os.path.basename(file)
 
     # Plot
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(8, 6))
     ax.plot(x, y, label=filename)
     ax.set_xlabel("Time (s)")
     ax.set_ylabel("Y-Position (m)")
