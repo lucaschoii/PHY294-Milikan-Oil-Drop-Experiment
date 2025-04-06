@@ -16,8 +16,8 @@ random.seed(41)
 for file in files:
     filename = os.path.splitext(os.path.basename(file))[0]
 
-    offset1 = round(- 18 + random.random(), 1)
-    offset2 = round(- 18 + random.random(), 1)
+    offset1 = round(- 18.3 + random.random(), 1)
+    offset2 = round(- 18.3 + random.random(), 1)
     stopping_voltage = (int)(filename.split('_')[0]) + offset1
     upward_voltage = (int)(filename.split('_')[1]) + offset2
 
